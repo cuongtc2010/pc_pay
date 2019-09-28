@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteRule ^(frontend|api)/web/ - [L]
+
+#RewriteRule ^api(/(.*))?$ api/web/$2 [S=1]
+#RewriteRule ^mobile(/(.*))?$ mobile/web/$2 [S=1]
+
+RewriteRule .* api/web/$0
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([^/]+/web)/.*$ $1/index.php
